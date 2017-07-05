@@ -7,35 +7,29 @@
   "bin": {
     "kpow": "./index.js"
   },
+  "homepage": "https://github.com/thewhodidthis/kpow#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thewhodidthis/kpow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thewhodidthis/kpow/issues"
+  },
   "scripts": {
     "test": "eslint . && browserify test | node ."
   },
   "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true,
-      "browser": true
-    },
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ],
-      "no-console": "warn"
-    }
+    "extends": "@thewhodidthis"
   },
   "engines": {
     "node": ">=4.2.4",
     "npm": ">=3.5.3"
   },
+  "os": ["darwin"],
   "dependencies": {},
   "devDependencies": {
+    "@thewhodidthis/eslint-config": "github:thewhodidthis/eslint-config",
     "browserify": "latest",
-    "eslint": "latest",
     "tape": "latest"
   },
   "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
