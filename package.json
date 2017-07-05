@@ -1,0 +1,43 @@
+{
+  "name": "kpow",
+  "version": "0.0.0",
+  "description": "Dumberer scat clone",
+  "main": "index.js",
+  "browser": "browser.js",
+  "bin": {
+    "kpow": "./index.js"
+  },
+  "scripts": {
+    "test": "eslint . && browserify test | node ."
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "no-console": "warn"
+    }
+  },
+  "engines": {
+    "node": ">=4.2.4",
+    "npm": ">=3.5.3"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "latest",
+    "eslint": "latest",
+    "tape": "latest"
+  },
+  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
+  "license": "Unlicense"
+}
