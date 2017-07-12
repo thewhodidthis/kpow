@@ -1,10 +1,10 @@
-module.exports = function kpow() {
+module.exports = function () {
   const body = document.body
   const jack = document.createElement('pre')
   const papa = console.log
 
   console.log = function (message) {
-    jack.innerHTML += (typeof message === 'object' ? JSON.stringify(message) : message) + '\n'
+    jack.innerHTML += `${typeof message === 'object' ? JSON.stringify(message) : message}\n`
 
     papa.apply(console, arguments)
   }
