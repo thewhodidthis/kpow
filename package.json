@@ -16,7 +16,9 @@
     "url": "https://github.com/thewhodidthis/kpow/issues"
   },
   "scripts": {
-    "test": "eslint . && browserify test | node ."
+    "pretest": "eslint .",
+    "test": "browserify test | node .",
+    "start": "npm t"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@thewhodidthis/eslint-config": "github:thewhodidthis/eslint-config",
     "browserify": "latest",
+    "eslint": "latest",
     "tape": "latest"
   },
   "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
