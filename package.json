@@ -1,6 +1,6 @@
 {
   "name": "kpow",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Dumberer scat clone",
   "main": "index.js",
   "browser": "browser.js",
@@ -27,7 +27,9 @@
     "node": ">=4.2.4",
     "npm": ">=3.5.3"
   },
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@thewhodidthis/eslint-config": "github:thewhodidthis/eslint-config",
