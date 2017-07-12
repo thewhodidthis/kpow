@@ -4,9 +4,6 @@
   "description": "Dumberer scat clone",
   "main": "index.js",
   "browser": "browser.js",
-  "bin": {
-    "kpow": "./index.js"
-  },
   "homepage": "https://github.com/thewhodidthis/kpow#readme",
   "repository": {
     "type": "git",
@@ -15,10 +12,12 @@
   "bugs": {
     "url": "https://github.com/thewhodidthis/kpow/issues"
   },
+  "bin": {
+    "kpow": "./index.js"
+  },
   "scripts": {
     "pretest": "eslint .",
-    "test": "browserify test | node .",
-    "start": "npm t"
+    "test": "browserify test | node ."
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
