@@ -1,6 +1,6 @@
 {
   "name": "kpow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dumberer scat clone",
   "main": "index.js",
   "browser": "browser.js",
