@@ -13,7 +13,7 @@
     "url": "https://github.com/thewhodidthis/kpow/issues"
   },
   "bin": {
-    "kpow": "./index.js"
+    "kpow": "./bin/kpow"
   },
   "scripts": {
     "pretest": "eslint .",
@@ -23,15 +23,15 @@
     "extends": "@thewhodidthis"
   },
   "engines": {
-    "node": ">=4.2.4",
-    "npm": ">=3.5.3"
+    "node": ">=6.4.0",
+    "npm": ">=3.10.3"
   },
   "os": [
     "darwin"
   ],
   "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "github:thewhodidthis/eslint-config",
+    "@thewhodidthis/eslint-config": "latest",
     "browserify": "latest",
     "eslint": "latest",
     "tape": "latest"

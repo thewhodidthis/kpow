@@ -1,5 +1,3 @@
-#!/usr/bin/env node --use-strict
-
 const fs = require('fs')
 const http = require('http')
 const path = require('path')
@@ -8,7 +6,7 @@ const { exec } = require('child_process')
 const file = process.argv[2]
 const port = process.env.PORT || 1821
 
-const boot = function boot(input) {
+const boot = (input) => {
   const index = fs.readFileSync(path.resolve(__dirname, 'index.html'))
 
   http
