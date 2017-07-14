@@ -11,17 +11,17 @@ const boot = (input) => {
 
   http
     .createServer((req, res) => {
-      if (req.url === '/input.js') {
-        res.setHeader('content-type', 'text/javascript')
-        res.on('finish', process.exit)
-        res.end(input)
+      if (req.url.includes('input')) {
+        res.setHeader('Content-Type', 'text/javascript')
+        res.write(input)
+        res.end(process.exit)
       } else {
-        res.setHeader('content-type', 'text/html')
+        res.setHeader('Content-Type', 'text/html')
         res.end(index)
       }
     })
     .on('error', console.error)
-    .on('listening', () => { exec(`open http://localhost:${port}`) })
+    .once('listening', () => { exec(`open http://localhost:${port}`) })
     .listen(port)
 }
 
