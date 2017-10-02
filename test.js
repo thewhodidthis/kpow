@@ -1,3 +1,5 @@
+'use strict'
+
 // Jack console logging browser side
 require('./')()
 
