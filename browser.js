@@ -3,11 +3,13 @@ module.exports = function () {
   const jack = document.createElement('pre')
   const papa = console.log
 
-  console.log = function (message) {
-    jack.innerHTML += `${typeof message === 'object' ? JSON.stringify(message) : message}\n`
+  console.log = function (text) {
+    jack.innerHTML += `${typeof text === 'object' ? JSON.stringify(text) : text}\n`
 
     papa.apply(console, arguments)
   }
 
-  body.insertBefore(jack, body.lastChild)
+  document.addEventListener('DOMContentLoaded', () => {
+    body.insertBefore(jack, body.lastChild)
+  })
 }
