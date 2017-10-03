@@ -1,28 +1,37 @@
 const fs = require('fs')
-const http = require('http')
+const { createServer } = require('http')
 const path = require('path')
 const { exec } = require('child_process')
 
 const file = process.argv[2]
-const port = process.env.PORT || 1821
+const port = process.env.PORT || 1999
 
 const boot = (input) => {
   const index = fs.readFileSync(path.resolve(__dirname, 'index.html'))
+  const store = []
 
-  http
-    .createServer((req, res) => {
-      if (req.url.includes('input')) {
-        res.setHeader('Content-Type', 'text/javascript')
-        res.write(input)
-        res.end(process.exit)
-      } else {
-        res.setHeader('Content-Type', 'text/html')
-        res.end(index)
+  const server = createServer(({ url }, res) => {
+    const isJS = url.includes('.js')
+
+    const data = isJS ? input : index
+    const type = isJS ? 'javascript' : 'html'
+
+    res.writeHead(200, {
+      'Connection': 'close',
+      'Content-Length': data.length,
+      'Content-Type': `text/${type}`
+    })
+
+    res.end(data, () => {
+      store.push(url)
+
+      if (store.length >= 2) {
+        server.close()
       }
     })
-    .on('error', console.error)
-    .once('listening', () => { exec(`open http://localhost:${port}`) })
-    .listen(port)
+  }).listen(port, () => {
+    exec(`open http://localhost:${port}/index.html`)
+  })
 }
 
 if (file) {
