@@ -1,1 +1,1 @@
-> Like scat but dependency free and basically darwin
+> Like scat sans deps
