@@ -7,6 +7,16 @@
   </head>
 
   <body>
-    <script src="/input.js"></script>
+    <script>
+      (function (d) {
+        var body = d.body
+        var kpow = d.querySelector('script');
+        var seed = d.createElement('script');
+        var time = Date.now()
+
+        seed.setAttribute('src', 'seed.js?' + time);
+        body.replaceChild(seed, kpow);
+      })(document)
+    </script>
   </body>
 </html>
