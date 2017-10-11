@@ -1,51 +1,66 @@
 const fs = require('fs')
-const { createServer } = require('http')
 const path = require('path')
+const { createServer } = require('http')
 const { exec } = require('child_process')
 
+const html = fs.readFileSync(path.resolve(__dirname, 'index.html'))
 const file = process.argv[2]
 const port = process.env.PORT || 1999
 
-const boot = (input) => {
-  const index = fs.readFileSync(path.resolve(__dirname, 'index.html'))
-  const store = []
+const boot = (seed) => {
+  const ledger = []
 
   const server = createServer(({ url }, res) => {
-    const isJS = url.includes('.js')
+    const isjs = url.includes('.js')
 
-    const data = isJS ? input : index
-    const type = isJS ? 'javascript' : 'html'
+    const data = isjs ? seed : html
+    const type = isjs ? 'javascript' : 'html'
+    const size = data.length
 
     res.writeHead(200, {
       'Connection': 'close',
-      'Content-Length': data.length,
+      'Content-Length': size,
       'Content-Type': `text/${type}`
     })
 
     res.end(data, () => {
-      store.push(url)
+      ledger.push(url)
 
-      if (store.length >= 2) {
+      if (ledger.length >= 2) {
         server.close()
       }
     })
   }).listen(port, () => {
-    exec(`open http://localhost:${port}/index.html`)
+    let cmd = 'xdg-open'
+
+    if (process.platform === 'win32') {
+      cmd = 'start'
+    }
+
+    if (process.platform === 'darwin') {
+      cmd = 'open'
+    }
+
+    exec(`${cmd} http://localhost:${port}/index.html`, (error) => {
+      if (error) {
+        console.error(error.message)
+      }
+    })
   })
 }
 
 if (file) {
   boot(fs.readFileSync(file))
 } else {
-  const data = []
+  const body = []
 
   process.stdin.resume()
   process.stdin
     .on('error', console.error)
     .on('data', (chunk) => {
-      data.push(chunk)
+      body.push(chunk)
     })
     .on('end', () => {
-      boot(Buffer.concat(data).toString())
+      boot(Buffer.concat(body).toString())
     })
 }
