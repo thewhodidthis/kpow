@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "description": "Dumberer scat clone",
   "main": "index.js",
+  "keywords": [
+    "cat",
+    "bcat",
+    "scat",
+    "pipe",
+    "tool",
+    "browser"
+  ],
   "homepage": "https://github.com/thewhodidthis/kpow#readme",
   "repository": {
     "type": "git",
