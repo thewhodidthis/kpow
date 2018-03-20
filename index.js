@@ -1,5 +1,8 @@
+'use strict'
+
 const fs = require('fs')
 const path = require('path')
+
 const { createServer } = require('http')
 const { exec } = require('child_process')
 
