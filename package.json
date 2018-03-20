@@ -3,14 +3,6 @@
   "version": "0.1.0",
   "description": "Dumberer scat clone",
   "main": "index.js",
-  "keywords": [
-    "cat",
-    "bcat",
-    "scat",
-    "pipe",
-    "tool",
-    "browser"
-  ],
   "homepage": "https://github.com/thewhodidthis/kpow#readme",
   "repository": {
     "type": "git",
@@ -38,6 +30,14 @@
     "@thewhodidthis/eslint-config": "latest",
     "eslint": "latest"
   },
+  "keywords": [
+    "cat",
+    "bcat",
+    "scat",
+    "pipe",
+    "tool",
+    "browser"
+  ],
   "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
   "license": "Unlicense"
 }
