@@ -18,7 +18,7 @@ const boot = (seed) => {
 
     const data = isjs ? seed : html
     const type = isjs ? 'javascript' : 'html'
-    const size = data.length
+    const size = Buffer.byteLength(data)
 
     res.writeHead(200, {
       'Connection': 'close',
@@ -64,6 +64,6 @@ if (file) {
       body.push(chunk)
     })
     .on('end', () => {
-      boot(Buffer.concat(body).toString())
+      boot(Buffer.concat(body))
     })
 }
