@@ -26,6 +26,7 @@ const boot = (seed) => {
       'Content-Type': `text/${type}`
     })
 
+    // Save url, quit once corresponding HTML template and input JS have been served
     res.end(data, () => {
       ledger.push(url)
 
