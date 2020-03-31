@@ -11,9 +11,10 @@
         var body = d.body
         var kpow = d.querySelector('script');
         var seed = d.createElement('script');
-        var time = Date.now()
 
-        seed.setAttribute('src', 'seed.js?' + time);
+        // Avoid caching
+        seed.setAttribute('src', 'seed.js?' + Date.now());
+        // Cleanup
         body.replaceChild(seed, kpow);
       })(document)
     </script>
