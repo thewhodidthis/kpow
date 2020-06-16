@@ -1,6 +1,6 @@
 ## about
 
-A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans dependencies. Comes in handy when running client side unit tests a-la [testling](https://github.com/substack/testling).
+A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans dependencies. Comes in handy when running client side unit tests a-la [testling](https://github.com/substack/testling) for example.
 
 ## setup
 
