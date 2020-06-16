@@ -4,10 +4,10 @@ A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hug
 
 ## setup
 
-Fetch the latest stable version from the _npm_ registry:
+Fetch the [latest stable version](https://npm.im/kpow) from the _npm_ registry:
 
 ```sh
-# Add development dependency
+# Add to 'package.json' development dependencies
 npm install kpow --save-dev
 ```
 
