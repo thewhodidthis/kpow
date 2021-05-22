@@ -20,24 +20,24 @@
   },
   "license": "Unlicense",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
-  "main": "index.js",
+  "exports": "./kpow.cjs",
+  "main": "./kpow.cjs",
   "bin": {
     "kpow": "bin/kpow"
   },
   "scripts": {
-    "pretest": "eslint .",
+    "pretest": "eslint *.cjs",
     "test": "cat test.js | node ."
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.1.6",
-    "eslint": "^7.2.0"
+    "@thewhodidthis/eslint-config": "^1.0.1",
+    "eslint": "^7.27.0"
   },
   "engines": {
-    "node": ">=6.4.0",
-    "npm": ">=3.10.3"
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13"
   }
 }
