@@ -6,8 +6,11 @@ const path = require('path')
 const { createServer } = require('http')
 const { exec } = require('child_process')
 
-const fileInput = process.argv[2]
 const port = process.env.PORT || 1999
+
+const [,, ...args] = process.argv
+const flags = args.filter(a => a === '--module' || a === '-m')
+const [fileInput] = args.filter(a => !flags.includes(a))
 
 if (fileInput) {
   load(fs.readFileSync(fileInput))
@@ -72,9 +75,9 @@ function load(seed) {
       command = 'open'
     }
 
-    exec(`${command} http://localhost:${port}/index.html`, (error) => {
-      if (error) {
-        console.error(error.message)
+    exec(`${command} http://localhost:${port}/index.html${flags.length ? '?module' : ''}`, (e) => {
+      if (e) {
+        console.error(e.message)
       }
     })
   })
