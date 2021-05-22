@@ -14,7 +14,15 @@
 
         // Avoid caching
         seed.setAttribute('src', 'seed.js?' + Date.now());
-        // Cleanup
+
+        // Allow for loading JS modules
+        var searchParams = new URLSearchParams(window.location.search);
+
+        if (searchParams.has('module')) {
+          seed.setAttribute('type', 'module');
+        }
+
+        // Clean up
         body.replaceChild(seed, kpow);
       })(document)
     </script>
