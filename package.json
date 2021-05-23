@@ -33,7 +33,7 @@
     "extends": "@thewhodidthis"
   },
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^1.0.1",
+    "@thewhodidthis/eslint-config": "^1.0.2",
     "eslint": "^7.27.0"
   },
   "engines": {
