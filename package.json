@@ -20,8 +20,8 @@
   },
   "license": "Unlicense",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
-  "exports": "./kpow.cjs",
-  "main": "./kpow.cjs",
+  "exports": "./main.cjs",
+  "main": "./main.cjs",
   "bin": {
     "kpow": "bin/kpow"
   },
