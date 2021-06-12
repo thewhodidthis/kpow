@@ -1,81 +1,67 @@
-'use strict'
+"use strict"
 
-const fs = require('fs')
-const path = require('path')
-
-const { createServer } = require('http')
-const { exec } = require('child_process')
+const process = require("process")
+const fs = require("fs")
+const path = require("path")
+const { createServer } = require("http")
+const { exec } = require("child_process")
 
 const port = process.env.PORT || 1999
+const [, , ...args] = process.argv
 
-const [,, ...args] = process.argv
-const flags = args.filter(a => a === '--module' || a === '-m')
-const [fileInput] = args.filter(a => !flags.includes(a))
+const c = args.indexOf("-c")
+const open = c >= 0 ? args[c + 1] : "open"
 
-if (fileInput) {
-  load(fs.readFileSync(fileInput))
+if (process.stdin.isTTY) {
+  const [seed = path.resolve(__dirname, "test.js")] = args.filter((_, i) => i !== c && i !== args.indexOf(open))
+
+  load(fs.readFileSync(seed))
 } else {
-  const result = []
+  const data = []
 
+  // Old style readable
   process.stdin.resume()
   process.stdin
-    .on('error', console.error)
-    .on('data', (chunk) => {
-      result.push(chunk)
+    .on("error", console.error)
+    .on("data", (chunk) => {
+      data.push(chunk)
     })
-    .on('end', () => {
-      load(Buffer.concat(result))
+    .on("end", () => {
+      load(Buffer.concat(data))
     })
 }
 
-const hostPath = path.resolve(__dirname, 'index.html')
-const host = fs.readFileSync(hostPath)
+function load(seed = "", times = [1]) {
+  const hostPath = path.resolve(__dirname, "index.html")
+  const host = fs.readFileSync(hostPath)
 
-function load(seed) {
-  // Keeps track of files loaded
-  const ledger = []
-
-  // Loads up to two files HTML and JS before shutting down
+  // Loads up HTML and JS before shutting down
   const server = createServer(({ url }, res) => {
-    // Figure out content type by looking at file extension
     let content = host
-    let contentType = 'html'
+    let contentType = "html"
 
-    if (url.includes('.js')) {
+    if (url.includes(".js")) {
       content = seed
-      contentType = 'javascript'
+      contentType = "javascript"
     }
 
     res.writeHead(200, {
-      'Connection': 'close',
-      'Content-Length': Buffer.byteLength(content),
-      'Content-Type': `text/${contentType}`
+      "Connection": "close",
+      "Content-Length": Buffer.byteLength(content),
+      "Content-Type": `text/${contentType}`,
     })
 
-    // Save url just passed in, quit once corresponding
-    // HTML host and input JS have been served
+    // Quit once both HTML and JS have been served
     res.end(content, () => {
-      ledger.push(url)
-
-      if (ledger.length >= 2) {
+      if (!times.pop()) {
         server.close()
       }
     })
   })
 
-  // Start listening, attempt to open host HTML in a browser window based on OS
+  // Start listening, attempt to open host HTML in a browser window based on -c command
   server.listen(port, () => {
-    let command = 'xdg-open'
-
-    if (process.platform === 'win32') {
-      command = 'start'
-    }
-
-    if (process.platform === 'darwin') {
-      command = 'open'
-    }
-
-    exec(`${command} http://localhost:${port}/index.html${flags.length ? '?module' : ''}`, (e) => {
+    exec(`${open} http://localhost:${port}/index.html`, (e) => {
       if (e) {
         console.error(e.message)
       }
