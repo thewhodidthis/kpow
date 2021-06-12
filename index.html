@@ -3,26 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>KPOW</title>
-    <link rel="icon" href="data:image/x-icon;base64,iVBORw0KGgo=">
   </head>
   <body>
     <script>
-      (function (d) {
+      ;(function (d) {
         var body = d.body
-        var kpow = d.querySelector('script');
-        var seed = d.createElement('script');
+        var kpow = d.querySelector("script");
+        var seed = d.createElement("script");
 
-        // Avoid caching
-        seed.setAttribute('src', 'seed.js?' + Date.now());
+        seed.setAttribute("type", "module");
+        seed.setAttribute("src", "seed.js?" + Date.now());
 
-        // Allow for loading JS modules
-        var searchParams = new URLSearchParams(window.location.search);
-
-        if (searchParams.has('module')) {
-          seed.setAttribute('type', 'module');
-        }
-
-        // Clean up
         body.replaceChild(seed, kpow);
       })(document)
     </script>
