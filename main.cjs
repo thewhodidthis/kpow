@@ -9,7 +9,7 @@ const { exec } = require("child_process")
 const port = process.env.PORT || 1999
 const [, , ...args] = process.argv
 
-const c = args.indexOf("-c")
+const c = args.map(a => a === "--command" ? "-c" : a).indexOf("-c")
 const open = c >= 0 ? args[c + 1] : "open"
 
 if (process.stdin.isTTY) {
@@ -64,6 +64,7 @@ function load(seed = "", times = [1]) {
     exec(`${open} http://localhost:${port}/index.html`, (e) => {
       if (e) {
         console.error(e.message)
+        server.close()
       }
     })
   })
