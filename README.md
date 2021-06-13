@@ -13,7 +13,7 @@ npm install kpow --save-dev
 
 ## usage
 
-Fires up a transient server on the `PORT` environment variable responding with the passed in JavaScript file or snippet attached to an empty HTML page, then attempts to open a browser prewiew according to the `-c, --command` option in one go.
+Fires up a transient server on the `PORT` environment variable responding with the passed in file attached to an empty HTML page, then attempts to launch a browser prewiew using `-c, --command` in one go.
 
 Override the _1999_ default port and `open(1)` command:
 
