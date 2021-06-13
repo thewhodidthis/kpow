@@ -26,7 +26,7 @@
     "kpow": "bin/kpow"
   },
   "scripts": {
-    "test": "cat test.js | node ."
+    "test": "echo '// Coucou!' | node . "
   },
   "engines": {
     "node": ">=14.17.0",
