@@ -7,15 +7,15 @@ A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hug
 Fetch the [latest stable version](https://npm.im/kpow) from the _npm_ registry:
 
 ```sh
-# Add to 'package.json' development dependencies
+# Add to package.json
 npm install kpow --save-dev
 ```
 
 ## usage
 
-Fires up a transient server on the `PORT` environment variable responding with the passed in JavaScript file or snippet attached to an empty HTML page, then attempts to open a browser prewiew according to the `-c` option all in one go.
+Fires up a transient server on the `PORT` environment variable responding with the passed in JavaScript file or snippet attached to an empty HTML page, then attempts to open a browser prewiew according to the `-c, --command` option in one go.
 
-To override the _1999_ default port:
+Override the _1999_ default port and `open(1)` command:
 
 ```sh
 PORT=8080 npx kpow file.js -c xdg-open
