@@ -39,12 +39,12 @@ function load(seed = "") {
 
   // Loads up HTML and JS before shutting down
   const server = createServer(({ url }, res) => {
-    let content = host
     let contentType = "html"
+    let content = host
 
     if (url.includes(".js")) {
-      content = seed
       contentType = "javascript"
+      content = seed
     }
 
     res.writeHead(200, {
