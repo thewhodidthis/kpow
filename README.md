@@ -4,7 +4,7 @@ A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hug
 
 ## setup
 
-Fetch the [latest stable version](https://npm.im/kpow) from the _npm_ registry:
+Download from the _npm_ registry:
 
 ```sh
 # Add to package.json
