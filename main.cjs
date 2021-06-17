@@ -39,23 +39,23 @@ function load(seed = "") {
 
   // Loads up HTML and JS before shutting down
   const server = createServer(({ url }, res) => {
-    let contentType = "html"
-    let content = host
+    let dataType = "html"
+    let data = host
 
     if (url.includes(".js")) {
-      contentType = "javascript"
-      content = seed
+      dataType = "javascript"
+      data = seed
     }
 
     res.writeHead(200, {
       "Connection": "close",
-      "Content-Length": Buffer.byteLength(content),
-      "Content-Type": `text/${contentType}`,
+      "Content-Length": Buffer.byteLength(data),
+      "Content-Type": `text/${dataType}`,
     })
 
-    res.end(content, () => {
+    res.end(data, () => {
       // OK quit
-      if (contentType === "javascript") {
+      if (dataType === "javascript") {
         server.close()
       }
     })
@@ -66,7 +66,10 @@ function load(seed = "") {
     exec(`${open} http://localhost:${port}/index.html`, (e) => {
       if (e) {
         console.error(e.message)
-        server.close()
+
+        if (server.listening) {
+          server.close()
+        }
       }
     })
   })
