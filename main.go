@@ -19,7 +19,7 @@ func main() {
 	var opener string
 	var script string
 
-	flag.StringVar(&opener, "c", "open", "Command to use for opening the URL")
+	flag.StringVar(&opener, "c", "open", "Command to use for calling the browser")
 	flag.StringVar(&script, "i", "", "Path to JS input")
 
 	flag.Parse()
