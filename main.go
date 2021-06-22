@@ -67,10 +67,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if path.Base(r.URL.Path) == "seed.js" {
+	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
+		if path.Base(req.URL.Path) == "seed.js" {
 			// Locate the Server to be calling Close on.
-			ctx := r.Context()
+			ctx := req.Context()
 			srv := ctx.Value(http.ServerContextKey).(*http.Server)
 
 			go func() {
@@ -80,13 +80,13 @@ func main() {
 			}()
 
 			// This is necessary when the script loading tag is of type module.
-			w.Header().Set("Content-Type", "application/javascript; charset=utf-8")
-			w.Header().Set("Connection", "close")
+			res.Header().Set("Content-Type", "application/javascript; charset=utf-8")
+			res.Header().Set("Connection", "close")
 
 			body = seed
 		}
 
-		_, err := w.Write(body)
+		_, err := res.Write(body)
 
 		if err != nil {
 			log.Fatal(err)
