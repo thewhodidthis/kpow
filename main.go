@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"strings"
 )
 
 //go:embed index.html
@@ -68,7 +69,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		if path.Base(req.URL.Path) == "seed.js" {
+		if strings.HasSuffix(path.Base(req.URL.Path), ".js") {
 			// Locate the Server to be calling Close on.
 			ctx := req.Context()
 			srv := ctx.Value(http.ServerContextKey).(*http.Server)
