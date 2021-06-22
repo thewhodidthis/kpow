@@ -20,16 +20,18 @@
   },
   "license": "Unlicense",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
-  "exports": "./main.cjs",
-  "main": "./main.cjs",
-  "bin": {
-    "kpow": "bin/kpow"
-  },
+  "bin": "./kpow",
   "scripts": {
-    "test": "echo '// Coucou!' | node . "
+    "test": "echo '// Coucou!' | ./kpow"
   },
   "engines": {
     "node": ">=14.17.0",
     "npm": ">=6.14.13"
-  }
+  },
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ]
 }

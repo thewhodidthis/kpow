@@ -1,6 +1,10 @@
 ## about
 
-A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans dependencies. Comes in handy when running client side unit tests a-la [testling](https://github.com/substack/testling) for example.
+A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans deps, which comes in handy when running client side unit tests a-la [testling](https://github.com/substack/testling) for example. At core equivalent to:
+
+```sh
+printf 'HTTP/1.1 200 OK\r\n\n%s\n' "<script>console.log('coucou');</script>" | nc -c -l 1234
+```
 
 ## setup
 
@@ -13,12 +17,12 @@ npm install kpow --save-dev
 
 ## usage
 
-Fires up a transient server on the `PORT` environment variable responding with the passed in file attached to an empty HTML page, then attempts to launch a browser prewiew using `-c, --command` in one go.
+Fires up a transient server on a random port with the passed in file attached to an empty HTML page, then attempts to launch a browser prewiew using `-c` in one go.
 
-Override the _1999_ default port and `open(1)` command:
+Override the default `open(1)` command:
 
 ```sh
-PORT=8080 npx kpow file.js -c xdg-open
+npx kpow -c xdg-open file.js
 ```
 
 Be piping:
