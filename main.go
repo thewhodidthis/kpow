@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"path"
 	"strings"
 )
 
@@ -69,11 +68,12 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		if strings.HasSuffix(path.Base(req.URL.Path), ".js") {
-			// Locate the Server to be calling Close on.
+		if strings.HasSuffix(req.URL.Path, ".js") {
+			// Locate the current server instance.
 			ctx := req.Context()
 			srv := ctx.Value(http.ServerContextKey).(*http.Server)
 
+			// Unblock, exit.
 			go func() {
 				if err := srv.Close(); err != nil {
 					log.Fatal(err)
