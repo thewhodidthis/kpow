@@ -3,7 +3,7 @@ package main
 import (
 	_ "embed"
 	"flag"
-	"io/ioutil"
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -43,7 +43,7 @@ func main() {
 	defer file.Close()
 
 	// Load JS bytes.
-	seed, err := ioutil.ReadAll(file)
+	seed, err := io.ReadAll(file)
 
 	if err != nil {
 		log.Fatal(err)
@@ -67,7 +67,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
+	// Ignore favicon requests.
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		if strings.HasSuffix(req.URL.Path, ".js") {
 			// Locate the current server instance.
 			ctx := req.Context()
@@ -80,14 +82,14 @@ func main() {
 				}
 			}()
 
-			// This is necessary when the script loading tag is of type module.
-			res.Header().Set("Content-Type", "application/javascript; charset=utf-8")
-			res.Header().Set("Connection", "close")
+			// Added because http.DetectContentType thinks it's "text/plain".
+			w.Header().Set("Content-Type", "text/javascript; charset=utf-8")
+			w.Header().Set("Connection", "close")
 
 			body = seed
 		}
 
-		_, err := res.Write(body)
+		_, err := w.Write(body)
 
 		if err != nil {
 			log.Fatal(err)
