@@ -22,7 +22,8 @@
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "bin": "./kpow",
   "scripts": {
-    "test": "echo '// Coucou!' | ./kpow"
+    "start": "go build -o kpow",
+    "test": "echo 'alert(\"Coucou!\");' | ./kpow"
   },
   "engines": {
     "node": ">=14.17.0",
