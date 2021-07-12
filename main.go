@@ -51,17 +51,17 @@ func main() {
 
 	// Choose a random port.
 	// https://stackoverflow.com/questions/how-to-use-next-available-port-in-http-listenandserve
-	ln, err := net.Listen("tcp", "localhost:0")
+	l, err := net.Listen("tcp", "localhost:0")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	defer ln.Close()
+	defer l.Close()
 
 	// The browser can connect now because the listening socket is open.
 	// https://stackoverflow.com/questions/get-notified-when-http-server-starts-listening
-	err = exec.Command(opener, "http://"+ln.Addr().String()).Start()
+	err = exec.Command(opener, "http://"+l.Addr().String()).Start()
 
 	if err != nil {
 		log.Fatal(err)
@@ -97,7 +97,7 @@ func main() {
 	})
 
 	// Start the blocking server loop.
-	if err = http.Serve(ln, nil); err != http.ErrServerClosed {
+	if err = http.Serve(l, nil); err != http.ErrServerClosed {
 		log.Fatal(err)
 	}
 }
