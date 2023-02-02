@@ -11,13 +11,8 @@
     "browser"
   ],
   "homepage": "https://github.com/thewhodidthis/kpow#readme",
-  "bugs": {
-    "url": "https://github.com/thewhodidthis/kpow/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thewhodidthis/kpow.git"
-  },
+  "bugs": "https://github.com/thewhodidthis/kpow/issues",
+  "repository": "github:thewhodidthis/kpow",
   "license": "Unlicense",
   "author": "Thepersonwhodidthis <thewhodidthis@gmail.com> (http://thewhodidthis.com/)",
   "bin": "./kpow",
