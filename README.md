@@ -1,6 +1,6 @@
 ## about
 
-A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans deps useful for running client side unit tests a-la [testling](https://github.com/substack/testling) for example. At core equivalent to:
+A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans deps useful for running client side unit tests a-la [testling](https://github.com/substack/testling) for example. In effect equivalent to:
 
 ```sh
 printf 'HTTP/1.1 200 OK\r\n\n%s\n' "<script>console.log('coucou');</script>" | nc -c -l 1234
