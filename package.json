@@ -2,19 +2,11 @@
   "name": "kpow",
   "version": "4.0.0",
   "description": "Dumberer scat clone",
-  "keywords": [
-    "cat",
-    "bcat",
-    "scat",
-    "pipe",
-    "tool",
-    "browser"
-  ],
   "homepage": "https://github.com/thewhodidthis/kpow#readme",
   "bugs": "https://github.com/thewhodidthis/kpow/issues",
   "repository": "github:thewhodidthis/kpow",
   "license": "Unlicense",
-  "author": "Thepersonwhodidthis <thewhodidthis@gmail.com> (http://thewhodidthis.com/)",
+  "author": "Thepersonwhodidthis <thewhodidthis@fastmail.com> (http://thewhodidthis.com/)",
   "bin": "./kpow",
   "scripts": {
     "start": "go build -o kpow",
@@ -29,5 +21,13 @@
   ],
   "cpu": [
     "x64"
+  ],
+  "keywords": [
+    "cat",
+    "bcat",
+    "scat",
+    "pipe",
+    "tool",
+    "browser"
   ]
 }
