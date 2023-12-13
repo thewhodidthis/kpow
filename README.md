@@ -2,7 +2,7 @@
 
 A featureless JS-only pipe-to-browser utility like [scat](https://github.com/hughsk/scat) sans deps useful for running client side unit tests a-la [testling](https://github.com/substack/testling) for example. In effect equivalent to:
 
-```sh
+```
 printf 'HTTP/1.1 200 OK\r\n\n%s\n' "<script>console.log('coucou');</script>" | nc -c -l 1234
 ```
 
@@ -10,7 +10,7 @@ printf 'HTTP/1.1 200 OK\r\n\n%s\n' "<script>console.log('coucou');</script>" | n
 
 Download from the _npm_ registry:
 
-```sh
+```
 # Add to package.json
 npm install kpow --save-dev
 ```
@@ -21,12 +21,12 @@ Fires up a transient server on a random port with the passed in file attached to
 
 Override the default `open(1)` command:
 
-```sh
+```
 npx kpow -c xdg-open file.js
 ```
 
 Be piping:
 
-```sh
+```
 echo "alert('coucou')" | cat - file.js | npx kpow
 ```
