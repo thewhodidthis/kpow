@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>KPOW</title>
+  </head>
+  <body>
+    <script>
+      ;(function (d) {
+        var body = d.body
+        var kpow = d.querySelector("script")
+        var seed = d.createElement("script")
+
+        seed.setAttribute("type", "module")
+        seed.setAttribute("src", Date.now() + ".js")
+
+        body.replaceChild(seed, kpow)
+      })(document)
+    </script>
+  </body>
+</html>

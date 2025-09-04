@@ -1,0 +1,30 @@
+{
+  "name": "kpow",
+  "version": "4.0.1",
+  "description": "Dumberer scat clone",
+  "homepage": "https://github.com/thewhodidthis/kpow#readme",
+  "bugs": "https://github.com/thewhodidthis/kpow/issues",
+  "repository": "github:thewhodidthis/kpow",
+  "license": "Unlicense",
+  "author": "Thepersonwhodidthis <me@thewhodidthis.com> (http://thewhodidthis.com)",
+  "bin": "./kpow",
+  "scripts": {
+    "start": "go build -o kpow",
+    "test": "echo 'alert(\"Coucou!\");' | ./kpow"
+  },
+  "engines": {
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13"
+  },
+  "os": [
+    "darwin"
+  ],
+  "keywords": [
+    "cat",
+    "bcat",
+    "scat",
+    "pipe",
+    "tool",
+    "browser"
+  ]
+}
